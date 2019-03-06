@@ -1,0 +1,22 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Detay";
+}
+
+<h2>Detay</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6"> Öğrenci Adı</div>
+        <div class="col-lg-6"> @Model.name @Model.lastname </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6"> E-Mail </div>
+        <div class="col-lg-6 alert-danger"> @Model.email </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6"> Sınıf </div>
+        <div class="col-lg-6 alert-danger"> @Model.classname </div>
+    </div>
+</div>
+

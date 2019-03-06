@@ -10,6 +10,13 @@ namespace StudentApplication.Controllers
 {
     public class HomeController : Controller
     {
+
+        StudentContext studentContext;
+
+        public HomeController(StudentContext context)
+        {
+            studentContext = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -32,6 +39,25 @@ namespace StudentApplication.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult ShowStudent()
+        {
+            var students = studentContext.students.ToList();
+            return View(students);
+        }
+
+        public IActionResult Detay(int id)
+        {
+            Student student = studentContext.students.Where(s => s.Id == id).FirstOrDefault();
+            if (student != null)
+            {
+                return View(student);
+            } else
+            {
+                
+                return NotFound();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
